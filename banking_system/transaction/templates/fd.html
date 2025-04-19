@@ -1,0 +1,21 @@
+{% extends 't_base.html' %}
+{% block title %}Fixed Deposit{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">
+            <i class="fas fa-piggy-bank"></i>
+            Fixed Deposit
+        </h2>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Create FD</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+

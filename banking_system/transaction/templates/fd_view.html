@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Fixed Deposits</title>
+  <style>
+    :root {
+      --primary-color: #0984e3;
+      --primary-light: #dff9fb;
+      --text-dark: #2d3436;
+      --text-light: #636e72;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --border-radius: 12px;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      color: var(--text-dark);
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+      color: var(--text-dark);
+      margin: 20px 0;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+    
+    .summary {
+      background-color: var(--primary-light);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      border-radius: var(--border-radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    
+    .summary h2 {
+      margin: 10px 0;
+      color: var(--primary-color);
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+    }
+    
+    .fd-container {
+      overflow-x: auto;
+      margin: 20px auto;
+      max-width: 100%;
+    }
+    
+    .fd-table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 600px;
+      background: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .fd-table th, 
+    .fd-table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: center;
+      font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    }
+    
+    .fd-table th {
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+    
+    .fd-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .fd-table tr:hover {
+      background-color: #f1f2f6;
+    }
+    
+    .no-fd {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-light);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      
+      .summary {
+        grid-template-columns: 1fr;
+        padding: 15px;
+      }
+      
+      .fd-table th, 
+      .fd-table td {
+        padding: 10px 8px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .summary h2 {
+        font-size: 1rem;
+      }
+      
+      .fd-table {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>📄 My Fixed Deposit Account</h1>
+
+  <div class="summary">
+    <div>
+      <h2>Total FD Balance</h2>
+      <p>${{ total_balance|floatformat:2 }}</p>
+    </div>
+    <div>
+      <h2>Total Maturity Amount</h2>
+      <p>${{ total_maturity|floatformat:2 }}</p>
+    </div>
+  </div>
+
+  <div class="fd-container">
+    <table class="fd-table">
+      <thead>
+        <tr>
+          <th>Amount ($)</th>
+          <th>Tenure (Months)</th>
+          <th>Interest Rate (%)</th>
+          <th>Maturity Amount ($)</th>
+          <th>Created At</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fd in fds %}
+        <tr>
+          <td>{{ fd.amount }}</td>
+          <td>{{ fd.tenure_months }}</td>
+          <td>{{ fd.interest_rate }}</td>
+          <td>{{ fd.maturity_amount }}</td>
+          <td>{{ fd.created_at|date:"Y-m-d" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5" class="no-fd">No fixed deposits found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

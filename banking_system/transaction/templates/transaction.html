@@ -1,0 +1,47 @@
+{% extends 't_base.html' %}
+{% load static %}
+
+{% block title %}Transaction History{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i class="fas fa-history"></i>
+                Transaction History
+            </h2>
+        </div>
+        <div class="card-body">
+            <!-- Transaction List -->
+            <div class="transaction-list">
+                {% for transaction in transactions %}
+                <div class="transaction-item {% if transaction.transaction_type == 'deposit' %}deposit{% else %}withdrawal{% endif %}">
+                    <div class="transaction-icon">
+                        <i class="fas 
+                            {% if transaction.transaction_type == 'deposit' %}fa-plus-circle
+                            {% elif transaction.transaction_type == 'withdraw' %}fa-minus-circle
+                            {% else %}fa-exchange-alt{% endif %}">
+                        </i>
+                    </div>
+                    <div class="transaction-details">
+                        <h3>{{ transaction.transaction_type|title }}</h3>
+                        <p class="transaction-meta">
+                            {% if transaction.description %}{{ transaction.description }}{% endif %}
+                            {{ transaction.timestamp }}
+                        </p>
+                    </div>
+                    <div class="transaction-amount {% if transaction.transaction_type == 'deposit' %}positive{% else %}negative{% endif %}">
+                        {% if transaction.transaction_type == 'deposit' %}+{% else %}-{% endif %}${{ transaction.amount }}
+                    </div>
+                </div>
+                {% empty %}
+                <div class="no-transactions">
+                    <p>No transactions found</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

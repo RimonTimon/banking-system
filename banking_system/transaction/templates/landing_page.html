@@ -1,0 +1,271 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GlobalBank - Your Digital Banking Partner</title>
+    <link rel="stylesheet" href="{% static 'landing.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <header class="hero">
+      <nav class="navbar">
+        <div class="logo"><i class="fas fa-university"></i> GlobalBank</div>
+        <div class="auth-buttons">
+          {% if user.is_authenticated %} {% if account %}
+          <a href="{% url 'dashboard' %}" class="btn btn-outline">Dashboard</a>
+          {% else %}
+          <a href="{% url 'account' %}" class="btn btn-outline">Open Account</a>
+          {% endif %} {% else %}
+          <a href="{% url 'login' %}" class="btn btn-outline">Login</a>
+          <a href="{% url 'register' %}" class="btn btn-outline">Register</a>
+
+          {% endif %}
+        </div>
+      </nav>
+
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>
+            Banking Made <span>Simple</span>, <span>Secure</span>, and
+            <span>Smart</span>
+          </h1>
+          <p>
+            Join over 5 million customers who trust GlobalBank for their
+            financial needs
+          </p>
+          <div class="hero-cta">
+            <a href="#features" class="btn btn-outline btn-large">Learn More</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1550565118-3a14e8d0386f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="GlobalBank Card"
+          />
+        </div>
+      </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <h2>Why Choose GlobalBank?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Bank-Level Security</h3>
+          <p>
+            256-bit encryption and multi-factor authentication to keep your
+            money safe
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-credit-card"></i>
+          </div>
+          <h3>Smart Debit Cards</h3>
+          <p>Contactless payments with instant transaction notifications</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-percentage"></i>
+          </div>
+          <h3>Competitive Rates</h3>
+          <p>Earn up to 3.5% APY on your savings with our premium accounts</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Mobile Banking</h3>
+          <p>Full banking capabilities right from your smartphone</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="cards-section">
+      <h2>Our Card Products</h2>
+      <div class="cards-slider">
+        <div class="card-product">
+          <div class="card-visual blue-card">
+            <div class="card-chip">
+              <i class="fas fa-microchip"></i>
+            </div>
+            <div class="card-number">•••• •••• •••• 4567</div>
+            <div class="card-footer">
+              <div class="card-name">JOHN DOE</div>
+              <div class="card-logo">
+                <i class="fab fa-cc-visa"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card-details">
+            <h3>Global Standard</h3>
+            <ul class="card-features">
+              <li><i class="fas fa-check"></i> No annual fee</li>
+              <li><i class="fas fa-check"></i> 1% cashback on all purchases</li>
+              <li>
+                <i class="fas fa-check"></i> Free ATM withdrawals nationwide
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-product">
+          <div class="card-visual gold-card">
+            <div class="card-chip">
+              <i class="fas fa-microchip"></i>
+            </div>
+            <div class="card-number">•••• •••• •••• 7890</div>
+            <div class="card-footer">
+              <div class="card-name">JOHN DOE</div>
+              <div class="card-logo">
+                <i class="fab fa-cc-mastercard"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card-details">
+            <h3>Global Premium</h3>
+            <ul class="card-features">
+              <li>
+                <i class="fas fa-check"></i> 2.5% cashback on all purchases
+              </li>
+              <li><i class="fas fa-check"></i> Airport lounge access</li>
+              <li><i class="fas fa-check"></i> Travel insurance included</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+      <h2>What Our Customers Say</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "GlobalBank's mobile app makes managing my finances so easy. I can
+            deposit checks, transfer money, and pay bills all in one place!"
+          </div>
+          <div class="testimonial-author">
+            <img
+              src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
+              alt="Sarah J."
+            />
+            <div>
+              <h4>Sarah J.</h4>
+              <p>Customer since 2019</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "The security features give me peace of mind. I get instant alerts
+            for every transaction and can freeze my card instantly if needed."
+          </div>
+          <div class="testimonial-author">
+            <img
+              src="https://cdn.expertphotography.com/wp-content/uploads/2018/10/cool-profile-picture-natural-light.jpg"
+              alt="Michael T."
+            />
+            <div>
+              <h4>Michael T.</h4>
+              <p>Customer since 2020</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to Join GlobalBank?</h2>
+        <p>
+          Open your account in just 5 minutes and get instant access to all our
+          features
+        </p>
+        <div class="cta-buttons">
+            {% if account %}
+            <a href="{% url 'dashboard' %}" class="btn btn-primary btn-large">
+                Go to Dashboard
+            </a>
+        {% else %}
+            <a href="{% url 'account' %}" class="btn btn-primary btn-large">
+                Open Account
+            </a>
+        {% endif %}
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo"><i class="fas fa-university"></i> GlobalBank</div>
+          <p>Banking for the digital generation</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Products</h4>
+            <ul>
+              <li><a href="#">Savings Accounts</a></li>
+              <li><a href="#">Debit Cards</a></li>
+              <li><a href="#">Loans</a></li>
+              <li><a href="#">Investments</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Security</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Locations</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 GlobalBank. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{% extends 't_base.html' %}
+{% block title %}Withdraw{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">
+            <i class="fas fa-minus-circle"></i>
+            Withdraw Money
+        </h2>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-danger">Confirm Withdrawal</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

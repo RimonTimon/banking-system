@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="auth-card">
+  <div class="auth-header">
+    <h2>Create Your Account</h2>
+  </div>
+  <div class="auth-body">
+    <form method="post" class="auth-form">
+      {% csrf_token %}
+      
+      {% if form.errors %}
+        <ul class="errorlist">
+          {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+      
+      <div class="form-group">
+        <label for="{{ form.full_name.id_for_label }}">Full Name</label>
+        {% render_field form.full_name class="form-control" placeholder="Full Name" %}
+      </div>
+      
+      <div class="form-group">
+        <label for="{{ form.email.id_for_label }}">Email</label>
+        {% render_field form.email class="form-control" placeholder="Email" %}
+      </div>
+      
+      <div class="form-group">
+        <label for="{{ form.phone.id_for_label }}">Phone Number</label>
+        {% render_field form.phone class="form-control" placeholder="Phone Number" %}
+      </div>
+      
+      <div class="form-group">
+        <label for="{{ form.date_of_birth.id_for_label }}">Date of Birth</label>
+        {% render_field form.date_of_birth class="form-control" placeholder="YYYY-MM-DD" %}
+      </div>
+      
+      <div class="form-group">
+        <label for="{{ form.gender.id_for_label }}">Gender</label>
+        {% render_field form.gender class="form-control" %}
+      </div>
+      
+      <div class="form-group">
+        <label for="{{ form.nationality.id_for_label }}">Nationality</label>
+        {% render_field form.nationality class="form-control" placeholder="Nationality" %}
+      </div>
+      
+      <div class="form-group">
+        <label for="{{ form.nid_passport.id_for_label }}">NID or Passport Number</label>
+        {% render_field form.nid_passport class="form-control" placeholder="NID or Passport Number" %}
+      </div>
+      
+      <div class="form-group">
+        <label for="{{ form.present_address.id_for_label }}">Present Address</label>
+        {% render_field form.present_address class="form-control" placeholder="Present Address" %}
+      </div>
+      
+      <div class="form-group">
+        <label for="{{ form.permanent_address.id_for_label }}">Permanent Address</label>
+        {% render_field form.permanent_address class="form-control" placeholder="Permanent Address" %}
+      </div>
+      
+      <div class="form-group">
+        <label for="{{ form.account_type.id_for_label }}">Account Type</label>
+        {% render_field form.account_type class="form-control" %}
+      </div>
+      
+      <div class="form-group">
+        <label for="{{ form.balance.id_for_label }}">Balance</label>
+        {% render_field form.balance class="form-control" placeholder="banalce" %}
+      </div>
+      
+      <div class="form-group">
+        <label for="{{ form.currency.id_for_label }}">Currency</label>
+        {% render_field form.currency class="form-control" placeholder="Currency (e.g., BDT)" %}
+      </div>
+      
+      <button type="submit" class="btn-auth btn-primary">Register</button>
+      
+    </form>
+  </div>
+</div>
+{% endblock %}
+
