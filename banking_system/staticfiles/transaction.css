@@ -1,4 +1,3 @@
-/* Reset and Base Styles */
 :root {
   --primary: #004aad;
   --primary-dark: #003276;
@@ -14,6 +13,7 @@
   --transition: all 0.3s ease;
 }
 
+/* Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -25,16 +25,10 @@ body {
   background-color: var(--light);
   color: var(--dark);
   line-height: 1.6;
-  min-height: 100vh;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Container and Layout */
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
@@ -47,32 +41,41 @@ header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  position: relative;
 }
 
 .logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: white;
-  }
-  
-  
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Mobile Menu Toggle - Hidden on Desktop */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Navigation Links - Visible on Desktop */
 .nav-links {
   display: flex;
   gap: 1rem;
   list-style: none;
-  flex-wrap: wrap;
 }
 
 .nav-links li a {
@@ -80,7 +83,6 @@ nav {
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius);
   transition: var(--transition);
-  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -89,10 +91,6 @@ nav {
 .nav-links li a:hover,
 .nav-links li a.active {
   background-color: var(--primary-dark);
-}
-
-.nav-links li a i {
-  font-size: 1.1rem;
 }
 
 /* Main Content */
@@ -113,23 +111,13 @@ nav {
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   padding: 1.5rem;
-  flex: 1;
-  min-width: 280px;
-  transition: var(--transition);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -144,19 +132,9 @@ nav {
   gap: 0.5rem;
 }
 
-.card-title i {
-  font-size: 1.2rem;
-}
-
-/* Account Info */
-.account-info {
-  margin-bottom: 1.5rem;
-}
-
 .account-info p {
   margin-bottom: 0.75rem;
   display: flex;
-  align-items: center;
   gap: 0.5rem;
 }
 
@@ -165,27 +143,10 @@ nav {
   color: var(--text-muted);
 }
 
-.balance-info {
-  margin-top: 1.5rem;
-}
-
-.balance-info h3 {
-  font-size: 1rem;
-  color: var(--text-muted);
-  margin-bottom: 0.5rem;
-}
-
 .balance-info h1 {
   font-size: 2.2rem;
   font-weight: 700;
   color: var(--success);
-}
-
-/* Quick Actions */
-.quick-actions {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
 }
 
 /* Button Styles */
@@ -194,18 +155,13 @@ nav {
   border-radius: var(--border-radius);
   color: white;
   font-weight: 600;
-  text-align: center;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
   border: none;
   cursor: pointer;
-}
-
-.btn i {
-  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  transition: var(--transition);
 }
 
 .btn-primary {
@@ -214,7 +170,6 @@ nav {
 
 .btn-primary:hover {
   background-color: #0069d9;
-  transform: translateY(-2px);
 }
 
 .btn-danger {
@@ -223,7 +178,6 @@ nav {
 
 .btn-danger:hover {
   background-color: #c82333;
-  transform: translateY(-2px);
 }
 
 .btn-success {
@@ -232,27 +186,15 @@ nav {
 
 .btn-success:hover {
   background-color: #218838;
-  transform: translateY(-2px);
 }
 
 .btn-view-all {
   background-color: var(--primary);
   padding: 0.5rem 1rem;
-  font-size: 0.9rem;
 }
 
 .btn-view-all:hover {
   background-color: var(--primary-dark);
-}
-
-.btn-outline {
-  background-color: transparent;
-  border: 1px solid var(--primary);
-  color: var(--primary);
-}
-
-.btn-outline:hover {
-  background-color: rgba(0, 74, 173, 0.05);
 }
 
 /* Table Styles */
@@ -281,8 +223,6 @@ nav {
   background-color: #f8f9fa;
   color: var(--primary);
   font-weight: 600;
-  position: sticky;
-  top: 0;
 }
 
 .table tr:last-child td {
@@ -293,7 +233,6 @@ nav {
   background-color: rgba(0, 74, 173, 0.03);
 }
 
-/* Status Badges */
 .text-success {
   color: var(--success);
   font-weight: 600;
@@ -314,69 +253,14 @@ nav {
   gap: 0.3rem;
 }
 
-.badge i {
-  font-size: 0.7rem;
-}
-
 .badge-success {
   background-color: #d4edda;
   color: #155724;
 }
 
-/* Transaction History Styles */
-.page-header {
-  margin-bottom: 2rem;
-}
-
-.page-header h1 {
-  font-size: 1.8rem;
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.filter-controls {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.filter-group {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.filter-group label {
-  font-weight: 500;
-  color: var(--text-muted);
-}
-
-.filter-select {
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
-  border: 1px solid #ddd;
-  background-color: white;
-  font-size: 0.9rem;
-}
-
+/* Transaction List Styles */
 .transaction-list {
   margin-bottom: 2rem;
-}
-
-.transaction-day-group {
-  margin-bottom: 1.5rem;
-}
-
-.transaction-date {
-  font-size: 1rem;
-  color: var(--text-muted);
-  padding: 0.5rem 0;
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid #eee;
 }
 
 .transaction-item {
@@ -400,409 +284,162 @@ nav {
   flex-shrink: 0;
 }
 
-.transaction-item.credit .transaction-icon {
+.transaction-item.deposit .transaction-icon {
   background-color: rgba(40, 167, 69, 0.1);
   color: var(--success);
 }
 
-.transaction-item.debit .transaction-icon {
+.transaction-item.withdrawal .transaction-icon {
   background-color: rgba(220, 53, 69, 0.1);
   color: var(--danger);
 }
 
-.transaction-item.transfer .transaction-icon {
-  background-color: rgba(0, 123, 255, 0.1);
-  color: var(--secondary);
-}
-
 .transaction-details {
   flex-grow: 1;
-  min-width: 0;
-}
-
-.transaction-details h3 {
-  font-size: 1rem;
-  margin-bottom: 0.25rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .transaction-meta {
   font-size: 0.8rem;
   color: var(--text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .transaction-amount {
   font-weight: 600;
   margin-left: 1rem;
-  white-space: nowrap;
 }
 
-.transaction-item.credit .transaction-amount {
+.transaction-amount.positive {
   color: var(--success);
 }
 
-.transaction-item.debit .transaction-amount {
+.transaction-amount.negative {
   color: var(--danger);
 }
 
-.transaction-item.transfer .transaction-amount {
-  color: var(--secondary);
+/* Quick Actions */
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
 }
 
-.load-more {
-  text-align: center;
-  margin: 2rem 0;
-}
-
-/* Mobile Components */
-.mobile-actions {
-  display: none;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.mobile-action-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 0.5rem;
-  background: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  color: var(--primary);
-  font-size: 0.8rem;
-  text-align: center;
-}
-
-.mobile-action-btn i {
-  font-size: 1.2rem;
-  margin-bottom: 0.3rem;
-}
-
-.mobile-profile-link {
-  display: none;
-  color: var(--primary);
-  font-size: 1.2rem;
-}
-
+/* Mobile Logout - Hidden on Desktop */
 .mobile-logout {
   display: none;
   margin-top: 1.5rem;
-}
-
-.mobile-back-btn {
-  display: none;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--primary);
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
-
-.mobile-bottom-nav {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: white;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 0;
-  z-index: 100;
-}
-
-.mobile-nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  flex: 1;
   text-align: center;
 }
 
-.mobile-nav-item i {
-  font-size: 1.2rem;
-  margin-bottom: 0.25rem;
-}
-
-.mobile-nav-item.active {
-  color: var(--primary);
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .row {
+    flex-direction: column;
+  }
+  
+  .col-md-6 {
+    width: 100%;
+  }
+  
   .quick-actions {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .logo {
-    font-size: 1.5rem;
-  }
-
-  .nav-links {
-    width: 100%;
-    justify-content: space-around;
-    padding: 0.5rem 0;
-  }
-
-  .nav-links li a {
-    padding: 0.5rem;
-    font-size: 0.9rem;
-  }
-
-  .card {
-    min-width: 100%;
-  }
-
-  .balance-info h1 {
-    font-size: 1.8rem;
-  }
-
-  .table th,
-  .table td {
-    padding: 0.75rem;
-  }
-
-  /* Mobile-specific styles */
-  .desktop-header {
-    display: none;
-  }
-
-  .mobile-actions {
-    display: grid;
-  }
-
-  .desktop-only {
-    display: none;
-  }
-
-  .mobile-profile-link {
+  /* Show mobile menu button */
+  .mobile-menu-toggle {
     display: block;
   }
-
+  
+  /* Hide regular nav links */
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--primary-dark);
+    flex-direction: column;
+    padding: 1rem;
+    z-index: 1000;
+  }
+  
+  /* Show nav links when active */
+  .nav-links.active {
+    display: flex;
+  }
+  
+  /* Adjust nav link items */
+  .nav-links li {
+    margin: 0.5rem 0;
+  }
+  
+  .nav-links li a {
+    padding: 0.75rem;
+  }
+  
+  /* Show mobile logout */
   .mobile-logout {
     display: block;
   }
-
-  .card-header {
-    flex-wrap: nowrap;
+  
+  /* Card adjustments */
+  .card {
+    padding: 1rem;
   }
-
-  .btn-view-all span {
-    display: none;
-  }
-
-  .btn-view-all i {
-    margin-left: 0;
-  }
-
-  .mobile-back-btn {
-    display: flex;
-  }
-
-  .mobile-bottom-nav {
-    display: flex;
-  }
-
-  .filter-controls {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .filter-group {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-  }
-
-  .filter-select {
-    width: 100%;
-  }
-
-  .main-content {
-    padding-bottom: 70px;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo {
-    font-size: 1.3rem;
-  }
-
-  .nav-links li a span {
-    display: none;
-  }
-
-  .nav-links li a i {
-    font-size: 1.3rem;
-  }
-
-  .card-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
+  
   .account-info p {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.2rem;
+    gap: 0.25rem;
   }
-
+  
   .account-info p strong {
     min-width: auto;
   }
-
-  .btn {
-    padding: 0.6rem;
-    font-size: 0.9rem;
+  
+  /* Transaction adjustments */
+  .transaction-item {
+    flex-direction: column;
+    align-items: flex-start;
   }
-
-  .btn i {
+  
+  .transaction-icon {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .transaction-amount {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    align-self: flex-end;
+  }
+  
+  /* Button adjustments */
+  .btn-view-all span {
     display: none;
   }
+}
 
-  .mobile-action-btn span {
-    font-size: 0.7rem;
+@media (max-width: 576px) {
+  .container {
+    padding: 0 0.75rem;
   }
-
-  .mobile-action-btn i {
-    font-size: 1rem;
+  
+  .balance-info h1 {
+    font-size: 1.8rem;
   }
-
-  .transaction-item {
-    padding: 0.75rem;
+  
+  .quick-actions {
+    grid-template-columns: 1fr;
   }
-
-  .transaction-icon {
-    width: 36px;
-    height: 36px;
-    margin-right: 0.75rem;
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
   }
-
-  .transaction-details h3 {
-    font-size: 0.9rem;
+  
+  .table th, 
+  .table td {
+    padding: 0.75rem 0.5rem;
   }
-
-  .transaction-meta {
-    font-size: 0.75rem;
-  }
-
-  .transaction-amount {
-    font-size: 0.9rem;
-  }
-}
-
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-  background-color: white;
-  margin: 10% auto;
-  padding: 1.5rem;
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  width: 90%;
-  max-width: 500px;
-}
-
-.modal h2 {
-  color: var(--primary);
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close:hover {
-  color: var(--dark);
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-}
-
-.btn-secondary {
-  background-color: var(--text-muted);
-}
-
-.btn-secondary:hover {
-  background-color: #5a6268;
-}
-
-/* Mobile Bottom Navigation */
-.mobile-bottom-nav {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: white;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 0;
-  z-index: 100;
-}
-
-.mobile-nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  flex: 1;
-  text-align: center;
-}
-
-.mobile-nav-item i {
-  font-size: 1.2rem;
-  margin-bottom: 0.25rem;
-}
-
-.mobile-nav-item.active {
-  color: var(--primary);
 }
