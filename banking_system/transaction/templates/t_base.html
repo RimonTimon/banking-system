@@ -31,15 +31,7 @@
                         <i class="fas fa-piggy-bank"></i>
                         <span>FD Account</span>
                     </a></li>
-                    <li class="desktop-logout">
-                        <form method="post" action="{% url 'logout' %}">
-                            {% csrf_token %}
-                            <button type="submit" class="logout-btn">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <span>Logout</span>
-                            </button>
-                        </form>
-                    </li>
+      
                 </ul>
             </nav>
         </div>
@@ -73,6 +65,9 @@
                 document.querySelector('.nav-links').classList.remove('active');
             });
         });
+
+
+
     </script>
 </body>
 </html>
